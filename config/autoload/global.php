@@ -13,5 +13,13 @@
  */
 
 return [
-    // ...
+   'db' => [
+        'driver'   => 'Pdo_Mysql',
+        'dsn'      => 'mysql:dbname=my_laminas;host=127.0.0.1',
+        'username' => 'alexandr',
+        'password' => '12345',
+        'driver_options' => [
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+        ],
+    ],
 ];
