@@ -16,5 +16,5 @@ return [
     'Laminas\Validator',
     'Application',
     'User',
-    
+    'Blog',
 ];
