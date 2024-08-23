@@ -4,6 +4,7 @@ namespace Blog;
 
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use Laminas\Router\Http\Literal;
+use Laminas\Router\Http\Segment;
 
 return [
     'service_manager' => [
@@ -25,6 +26,21 @@ return [
                         'controller' => Controller\ListController::class,
                         'action'     => 'index',
                     ]
+                ],
+                'may_terminate' => true,
+                'child_routes'  => [
+                    'detail' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/:id',
+                            'defaults' => [
+                                'action' => 'detail',
+                            ],
+                            'constraints' => [
+                                'id' => '[1-9]\d*',
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ],
