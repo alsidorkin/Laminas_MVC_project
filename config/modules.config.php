@@ -17,4 +17,5 @@ return [
     'Application',
     'User',
     'Blog',
+    'Category',
 ];

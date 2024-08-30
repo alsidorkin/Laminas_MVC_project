@@ -1,3 +1,4 @@
+<?php
 namespace Blog\Model;
 
 interface PostCommandInterface
