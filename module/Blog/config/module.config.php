@@ -17,6 +17,7 @@ return [
             Model\PostCommand::class => InvokableFactory::class,
             Model\LaminasDbSqlRepository::class => Factory\LaminasDbSqlRepositoryFactory::class,
             Model\LaminasDbSqlCommand::class => Factory\LaminasDbSqlCommandFactory::class,
+            
         ],
     ],
     'router' => [
@@ -54,6 +55,32 @@ return [
                             ],
                         ],
                     ],
+                    'edit' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/edit/:id',
+                            'defaults' => [
+                                'controller' => Controller\WriteController::class,
+                                'action'     => 'edit',
+                            ],
+                            'constraints' => [
+                                'id' => '[1-9]\d*',
+                            ],
+                        ],
+                    ],
+                    'delete' => [
+                    'type' => Segment::class,
+                    'options' => [
+                        'route' => '/delete/:id',
+                        'defaults' => [
+                            'controller' => Controller\DeleteController::class,
+                            'action'     => 'delete',
+                        ],
+                        'constraints' => [
+                            'id' => '[1-9]\d*',
+                        ],
+                    ],
+                ],
                 ],
             ],
         ],
@@ -62,6 +89,7 @@ return [
         'factories' => [
             Controller\ListController::class => Factory\ListControllerFactory::class,
             Controller\WriteController::class => Factory\WriteControllerFactory::class,
+            Controller\DeleteController::class => Factory\DeleteControllerFactory::class,
         ],
     ],
     'view_manager' => [
